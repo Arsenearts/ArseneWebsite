@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Arsene Technologies</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
     <style>
         :root {
             --primary-color: #008000;
-            --secondary-color: #FFD700;
+            --secondary-color: #ffd700;
             --text-color: #000000;
         }
 
@@ -23,7 +23,7 @@
         }
 
         .navbar a.nav-link {
-            color: #FFD700 !important;
+            color: #ffd700 !important;
             font-weight: bold;
         }
 
@@ -119,14 +119,55 @@
             box-shadow: 0 0 0 0.2rem rgba(0, 128, 0, 0.25);
         }
 
-        .carousel-full-width {
-            width: 100vw;
+        .carousel-inner {
+            position: relative;
+            height: auto;
+            overflow: hidden;
         }
 
-        .carousel-inner img {
-            width: 100vw;
-            height: 75vh;
+        .carousel-item {
+            position: relative;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+            animation: zoomIn 8s ease forwards;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            max-height: 75vh;
             object-fit: cover;
+            display: block;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item img {
+                max-height: 40vh;
+            }
+
+            .carousel-caption h1 {
+                font-size: 1.2rem;
+            }
         }
 
         body,
@@ -160,53 +201,14 @@
             font-weight: 500;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
-
-        .carousel-item {
-            opacity: 0;
-            transition: opacity 1s ease;
-            transform: scale(1);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 75vh;
-            object-fit: cover;
-        }
-
-        .carousel-item.active {
-            opacity: 1;
-            position: relative;
-            animation: zoomIn 8s ease forwards;
-        }
-
-        @keyframes zoomIn {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .carousel-inner {
-            position: relative;
-            height: 75vh;
-            overflow: hidden;
-        }
     </style>
-
 </head>
 
 <body class="theme">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <span class="navbar-brand">
-                <img src="./images/arsene-logo.png" alt="Arsene Technologies Logo" width="60" height="60">
+                <img src="./images/arsene-logo.png" alt="Arsene Technologies Logo" width="60" height="60" />
             </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -229,21 +231,21 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="./images/businessman-working-futuristic-office.jpg" class="d-block w-100"
-                        alt="Transforming Data into Innovation">
+                        alt="Transforming Data into Innovation" />
                     <div class="carousel-caption d-none d-md-block">
                         <h1>Transforming Data into Innovation</h1>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="./images/control-table-spacecraft.jpg" class="d-block w-100"
-                        alt="Beyond Boundaries: Embracing Space & Tech">
+                        alt="Beyond Boundaries: Embracing Space & Tech" />
                     <div class="carousel-caption d-none d-md-block">
                         <h1>Beyond Boundaries: Embracing Space & Tech</h1>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="./images/pexels-tomfisk-6754763.jpg" class="d-block w-100"
-                        alt="Precision. Performance. Possibility.">
+                        alt="Precision. Performance. Possibility." />
                     <div class="carousel-caption d-none d-md-block">
                         <h1>Precision. Performance. Possibility.</h1>
                     </div>
@@ -303,9 +305,7 @@
                 });
             });
         });
-    </script>
 
-    <script>
         const myCarousel = document.querySelector('#carouselExample');
         const carousel = new bootstrap.Carousel(myCarousel, {
             interval: 3000,
